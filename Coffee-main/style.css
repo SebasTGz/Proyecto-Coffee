@@ -161,6 +161,24 @@ html {
    width: 30px;
  }
 
+/*Mensaje de Construccion*/
+.construccion{
+   display: flex;
+   text-align: center;
+   align-items: center;
+   color: #1f1f1d;
+   padding: 25px;
+   background-color: #f1bb09;
+   /*border: 1px solid red; para checar divisiones
+   /*background-clip: content-box; contenido separado*/ 
+   font-size: 50px;
+   margin-bottom: 2px;
+}
+ 
+ .construccion:hover{
+  background-color: #973a3a;
+ }
+ 
  .products {
    padding: 70px 0 0 0;
    text-align: center;
