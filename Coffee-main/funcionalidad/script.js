@@ -52,8 +52,8 @@ function insertarCarrito(elemento){
     
     `;
 
-     lista.appendChild(row);
-     
+    lista.appendChild(row);
+    
 }
 
 function eliminarElemento(e) {
@@ -63,9 +63,9 @@ function eliminarElemento(e) {
 
     if (e.target.classList.contains('borrar')) {
 
-         e.target.parentElement.parentElement.remove();
-         elemento = e.target.parentElement.parentElement;
-         elementoId = elemento.querySelector('a').getAttribute('data-id');
+        e.target.parentElement.parentElement.remove();
+        elemento = e.target.parentElement.parentElement;
+        elementoId = elemento.querySelector('a').getAttribute('data-id');
 
     }
 

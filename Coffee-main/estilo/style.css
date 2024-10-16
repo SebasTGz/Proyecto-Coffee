@@ -19,24 +19,31 @@ html {
 }
 
 .container {
-    max-width: 1500px;
+    max-width: 1600px;
     margin: 0 auto;
+}
+
+.figure .logocafe {  /*ARREGLAR DESPUES*/
+    position: relative;
+    float: left;
+    bottom: 30px;
+    top: 500px;
 }
 
 .header {
     background-image: linear-gradient(
         rgba(0, 0, 0, 0.2),
         rgba(0, 0, 0, 0.2)),
-        url(images/MicrosoftTeams-image\ \(5\)_0.webp);
+        url(../images/MicrosoftTeams-image\ \(5\)_0.webp);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     align-items: center;
-    min-height: 80vh;
- }   
+    min-height: 65vh;
+}   
 
- .menu {
+.menu {
     position: absolute;
     top: 0;
     left: 0;
@@ -44,50 +51,51 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
- }
+}
 
- .menu .navebar ul li {
+.menu .navebar ul li {
     position: relative;
     float: left;
- }
+    /*bottom: 20px; ARREGLAR*/
+}
 
- .menu .navebar ul li a {
+.menu .navebar ul li a {
     font-size: 22px;
-    padding: 70px;
+    padding: 50px;
     color: #FFFFFF;
     display: block;
     font-weight: 600;
- }
+}
 
- .menu .navebar ul li a:hover{
-   color:#F35200;
- }
+.menu .navebar ul li a:hover{
+    color:#F35200;
+}
 
- #menu {
+#menu {
     display: none;
- }
+}
 
- .menu-icono {
+.menu-icono {
     width: 25px;
- }
+}
 
- .menu label {
+.menu label {
     cursor: pointer;
     display: none;
- }
+}
 
  /* CARRITO */
- .submenu {
-   position: relative;
-   cursor: pointer;
- }
+.submenu {
+    position: relative;
+    cursor: pointer;
+}
 
- .submenu #carrito {
+.submenu #carrito {
     display: none;
     cursor: pointer;
- }
+}
 
- .submenu:hover #carrito {
+.submenu:hover #carrito {
     display: block;
     position: absolute;
     right: 0;
@@ -97,16 +105,16 @@ html {
     background-color: #4E4B5076;
     padding: 30px;
     min-width: 700px;
- }
+}
 
- table {
-   width: 100%;
- }
+table {
+    width: 100%;
+}
 
- th, td {
-   color: #000000;
-   font-size: 20px;
- }
+th, td {
+    color: #000000;
+    font-size: 20px;
+}
 
  .borrar {
    background-color: #F35200;
@@ -126,6 +134,7 @@ html {
    line-height: 80px;
    color: #FFFFFF;
    margin-bottom: 20px;
+   margin-top: 5rem; /*ARREGLAR*/
  }
 
  .header-txt p {
@@ -244,7 +253,7 @@ html {
    color: #000000;
  }
 
- /*BOTÓN-UP*/
+/*BOTÓN-UP*/
 #botonArriba {
   position: fixed;
   bottom: 30px;
