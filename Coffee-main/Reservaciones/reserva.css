@@ -1,0 +1,196 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f3;
+    color: #333;
+    background: url(../images/CAFE.RESERVA.jpg) no-repeat center top; 
+    background-size: cover;
+
+  }
+
+  html {
+    scroll-behavior: smooth;
+}
+  
+  .container {
+    max-width: 380px;
+    margin: 0px auto;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+.container .icon {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: -0px;
+    left: calc(50% - 90px);
+}
+
+.menu {
+    background: transparent;
+}
+
+figure img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+  h1 {
+    text-align: center;
+    color: #6d4c41;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input, button {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  input:focus {
+    border-color: #6d4c41;
+    outline: none;
+  }
+  
+  button {
+    background-color: #6d4c41;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #5a382f;
+  }
+  
+  #successMessage {
+    text-align: center;
+    color: #4caf50;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  /*Responsive 991*/
+@media(max-width:768px) {
+
+    figure img {
+        padding: 5px;
+        max-height: 70px;
+        max-width: 50px;
+    }
+
+    .login-box .icon{
+        max-width: 60%;
+    }
+
+    .login-box h1{
+        font-size: 20px;
+        padding: 50px 0;
+    }
+
+    .login-box input {
+        width: 90%;
+    }
+
+    .login-box {
+        width: 80%; /* Reduce el ancho en pantallas pequeñas */
+        padding: 15px; /* Menos padding */
+    }
+
+    button {
+        padding: 8px; /* Botón más pequeño */
+    }
+    
+    input[type="text"], input[type="password"] {
+        padding: 8px; /* Campos de entrada más pequeños */
+    }
+
+    .checkbox-container {
+        padding: 0 5px 0 240px;
+    }
+
+    label {
+        padding: 1px;
+    }
+    
+    footer {
+        font-size: 12px; /* Fuente más pequeña en el footer */
+        padding: 8px 0;
+    }
+
+}
+
+/*@media(max-width:480px) {
+
+    figure img {
+        padding: 8px;
+        max-height: 80px;
+        max-width: 100px;
+    }
+
+    .login-box .icon{
+        max-width: 50%;
+    }
+
+    .login-box h1{
+        font-size: 15px;
+        padding: 40px 0;
+    }
+
+    .login-box input {
+        width: 70%;
+    }
+
+    .login-box {
+        width: 100%; /* Reduce el ancho en pantallas pequeñas 
+        padding: 10px; /* Menos padding *
+        max-width: none;
+    }
+
+    button {
+        padding: 6px; /* Botón más pequeño 
+    }
+    
+    input[type="text"], input[type="password"] {
+        padding: 6px; /* Campos de entrada más pequeños 
+    }
+
+    .checkbox-container {
+        padding: 0 5px 0 240px;
+    }
+
+    label {
+        padding: 1px;
+    }
+    
+    footer {
+        font-size: 10px; /* Fuente más pequeña en el footer 
+        padding: 5px 0;
+    }
+
+}*/
+
+  
