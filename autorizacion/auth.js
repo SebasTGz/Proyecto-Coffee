@@ -1,13 +1,4 @@
 /**
- * Referencias a los inputs en login HTML, por el id.
- */
-
-const loginEmail = document.getElementById("login-email");
-const loginPassword = document.getElementById("login-password");
-const registerEmail = document.getElementById("register-email");
-const registerPassword = document.getElementById("register-password");
-
-/**
  * Claves de acceso para proyeto firebase.
  */
 
@@ -21,16 +12,27 @@ const firebaseConfig = {
     appId: "1:181581822809:web:ef1823fed0550f1f142a48"
 
 }
-
 firebase.initializeApp(firebaseConfig);
+
+/**
+ * Funcion que me da firebase para mantener la sesión iniciada del usuario localmente.
+ */
+
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .then(() => {
+        console.log("Persistencia de sesión configurada.");
+    })
+    .catch((error) => {
+        console.error("Error en la configuración de persistencia:", error.message);
+    });
 
 /**
  * Funcion para registrar usuario nuevo y redirigirlo a la sección de login.
  */
 
 function register() {
-    const email = registerEmail.value;
-    const password = registerPassword.value;
+    const email = document.getElementById("register-email").value;
+    const password = document.getElementById("register-password").value;
 
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
@@ -39,13 +41,13 @@ function register() {
                 icon: 'success',
                 title: '¡Registro Existoso!',
                 text: `Bienvenido, ${email}`,
-                confirmButtonText: 'Continuar'  
+                confirmButtonText: 'Continuar'
             })
 
             .then(() => {
-                window.location.href = "login.html"
-                registerEmail.value = "";
-                registerPassword.value = ""
+                    window.location.href = "login.html"
+                    email.value = "";
+                    password.value = ""
             });
         })
 
@@ -55,29 +57,26 @@ function register() {
                 icon: 'error',
                 title: '¡Error al registrarse, vuelva a intentarlo!',
                 text: `${error.message}`,
-                confirmButtonText: 'Continuar'  
+                confirmButtonText: 'Continuar'
             })
-
-            registerEmail.value = "";
-            registerPassword.value = "";
-
+            email.value = "";
+            password.value = "";
         });
-    
-} 
+
+}
 
 /**
- * Funcion para iniciar sesión, después de registrar las credenciales y redirigir a la página principal.
+ * Funcion para iniciar sesión, después de registrar las credenciales redirigiendo a la página principal.
  */
 
 function login() {
-    const email = loginEmail.value;
-    const password = loginPassword.value;
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
 
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-
+            
             const user = userCredential.user;
-
             Swal.fire({
                 icon: 'success',
                 title: '¡Login Existoso!',
@@ -86,13 +85,14 @@ function login() {
             })
             .then(() => {
                 window.location.href = "../dashboard/index.html"
-                loginEmail.value = "";
-                loginPassword.value = "";
-            });
+                email.value = "";
+                password.value = "";
+            })
+
         })
 
         .catch((error) => {
-
+            
             var errorCode = error.code; //manejo errores
             var errorMessage = error.message;
 
@@ -107,33 +107,54 @@ function login() {
             loginPassword.value = "";
 
         });
-    
-} 
+
+}
+
+/**
+ * Verificar el estado de autenticación.
+ */
+
+firebase.auth().onAuthStateChanged((user) => {
+    const btnLogin = document.getElementById("btn-login");
+    const btnLogout = document.getElementById("btn-logout");
+
+    if (user) {
+        // Usuario logueado
+        if (btnLogin) btnLogin.style.display = "none";
+        if (btnLogout) btnLogout.style.display = "block";
+        console.log("Usuario logueado:", user.email);
+    } else {
+        // Usuario no logueado
+        if (btnLogin) btnLogin.style.display = "block";
+        if (btnLogout) btnLogout.style.display = "none";
+        console.log("Ningún usuario está logueado");
+    }
+});
 
 /**
  * Función para cerrar sesión.
  */
 
 function logout() {
-    firebase.auth().signOut().then(() => {
-        alert("Sesión cerrada");
-        window.location.href= "../página Uno/index.html";
-    }).catch((error) => {
-        alert("Error: " + error.message);
+
+        firebase.auth().signOut()
+        .then(() => {
+            
+        Swal.fire({
+            icon: 'success',
+            title: 'Sesión Cerrada!',
+            text: "Se ha cerrado la sesión correctamente",
+            confirmButtonText: 'Continuar'  
+        })
+        .then(() => {
+            window.location.href = "../login/login.html"
+        })
+
+    })
+        .catch((error) => {
+            alert("Error al cerrar sesión: " + error.message);
     });
 }
-
-/**
- * Verificación del estado de autenticación.
- */
-
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        console.log("Usuario logueado: ", user.email);
-    } else {
-        console.log("Ningún usuario está logueado");
-    }
-});
 
 /**
  * Funcion para alternar entre formularios, esta se encarga de esconder el formulario de inicio de sesion,
@@ -169,4 +190,3 @@ document.getElementById('nopassword').addEventListener('click', function(e){
     })
 
 });
-
