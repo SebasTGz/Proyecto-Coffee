@@ -85,7 +85,7 @@ function login() {
                 confirmButtonText: 'Continuar'  
             })
             .then(() => {
-                window.location.href = "../página Uno/index.html"
+                window.location.href = "../dashboard/index.html"
                 loginEmail.value = "";
                 loginPassword.value = "";
             });
