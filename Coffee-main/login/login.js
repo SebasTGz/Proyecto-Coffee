@@ -1,10 +1,33 @@
-// Referencias a los inputs
+/**
+ * Referencias a los inputs en login HTML, por el id.
+ */
+
 const loginEmail = document.getElementById("login-email");
 const loginPassword = document.getElementById("login-password");
 const registerEmail = document.getElementById("register-email");
 const registerPassword = document.getElementById("register-password");
 
-// Función para registrar un nuevo usuario
+/**
+ * Claves de acceso para proyeto firebase.
+ */
+
+const firebaseConfig = {  
+
+    apiKey: "AIzaSyBdrGcF8pvWfRaR9bIHPbzeceLZx7cg-oA",
+    authDomain: "sealcoffee-9e6b5.firebaseapp.com",
+    projectId: "sealcoffee-9e6b5",
+    storageBucket: "sealcoffee-9e6b5.appspot.com",
+    messagingSenderId: "181581822809",
+    appId: "1:181581822809:web:ef1823fed0550f1f142a48"
+
+}
+
+firebase.initializeApp(firebaseConfig);
+
+/**
+ * Funcion para registrar usuario nuevo y redirigirlo a la sección de login.
+ */
+
 function register() {
     const email = registerEmail.value;
     const password = registerPassword.value;
@@ -40,9 +63,12 @@ function register() {
 
         });
     
-} ///FIN FUNCION REGISTER
+} 
 
-// Función para iniciar sesión
+/**
+ * Funcion para iniciar sesión, después de registrar las credenciales y redirigir a la página principal.
+ */
+
 function login() {
     const email = loginEmail.value;
     const password = loginPassword.value;
@@ -82,18 +108,25 @@ function login() {
 
         });
     
-} //FIN FUNCION LOGIN
+} 
 
-// Función para cerrar sesión
+/**
+ * Función para cerrar sesión.
+ */
+
 function logout() {
     firebase.auth().signOut().then(() => {
         alert("Sesión cerrada");
+        window.location.href= "../página Uno/index.html";
     }).catch((error) => {
         alert("Error: " + error.message);
     });
 }
 
-// Verificar el estado de autenticación
+/**
+ * Verificación del estado de autenticación.
+ */
+
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
         console.log("Usuario logueado: ", user.email);
@@ -102,17 +135,29 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
+/**
+ * Funcion para alternar entre formularios, esta se encarga de esconder el formulario de inicio de sesion,
+ * al mismo tiempo que deja visible el formulario de registro.
+ */
+
 function showRegisterForm() {
     document.getElementById("login-form").style.display = "none";
     document.getElementById("register-form").style.display = "block";
 }
+
+/**
+ * Esta funcion básicamente hace lo opuesto a la anterior.
+ */
 
 function showLoginForm() {
     document.getElementById("login-form").style.display = "block";
     document.getElementById("register-form").style.display = "none";
 }
 
-//Mensaje Password
+/**
+ * Mensaje cómico de error de contraseña.
+ */
+
 document.getElementById('nopassword').addEventListener('click', function(e){
     e.preventDefault();
     //alert("Buen día, lo invitamos a recordarla!");
