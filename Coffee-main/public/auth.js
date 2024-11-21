@@ -84,7 +84,7 @@ function login() {
                 confirmButtonText: 'Continuar'  
             })
             .then(() => {
-                window.location.href = "../dashboard/index.html"
+                window.location.href = "../public/index.html"
                 email.value = "";
                 password.value = "";
             })
@@ -147,7 +147,7 @@ function logout() {
             confirmButtonText: 'Continuar'  
         })
         .then(() => {
-            window.location.href = "../login/login.html"
+            window.location.href = "../public/login.html"
         })
 
     })

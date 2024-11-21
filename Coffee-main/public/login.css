@@ -2,7 +2,7 @@
 
 body{
     margin: 0;
-    background: url(../images/coffee-header.jpg) no-repeat center top; /*CAMBIAR*/
+    background: url(../public/images/coffee-header.jpg) no-repeat center top; /*CAMBIAR*/
     background-size: cover;
     font-family: 'Poppins', sans-serif;
     height: 100vh;
